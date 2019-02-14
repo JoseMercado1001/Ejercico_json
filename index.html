@@ -10,17 +10,17 @@
 			//crear una peticion
 			let xhr = new XMLHttpRequest();
 			xhr.onreadystatechange = function(){
-				console.log(this.readyState, this.status, this.statusText)
+				console.log(this.readyState, this.status, this.statusText);
 			}
+
 			xhr.open("GET", "https://josemercado1001.github.io/Ejercico_json/");
 
-			
 			//procesar la peticion 
 			xhr.onload = function(){
 				if(this.readyState === 4 && this.status === 200){
 
 					//cambiar texto
-
+					console.log(this.responseText);
 					//esconder el boton
 				}else{
 					//la informacion no llego
@@ -29,12 +29,7 @@
 			}
 			//
 			xhr.send();
-		}
-
-		function changeText(response){
-
-		}
-		
+		}	
 	</script>
 </head>
 <body>
