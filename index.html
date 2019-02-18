@@ -22,6 +22,7 @@
 					//cambiar texto
 					let data = JSON.parse(this.responseText);
 					let emptyDiv = document.getElementById("loaded-info");
+					
 					let html = '';
 					data.forEach(function(persona){
 						html += '<p>'
@@ -42,13 +43,67 @@
 			} 
 			//
 			xhr.send();
-		}	
+		}
+		function postExample() {
+			let xhr = new XMLHttpRequest();
+			xhr.open("POST", "https://10.24.43.221:300/kittens");
+
+			xhr.onload = function(){};
+
+			xhr.onerror = function(){
+				alert("la conexion ha fallado");
+			};
+
+			let name = document getElementById('name').value;
+			let cuteness = document getElementById('cuteness').value;
+			let colour = document getElementById('colour').value;
+			let owner = document getElementById('owner').value;
+			let explodes = document getElementById('explodes').checked;
+
+			let obj = {name, cuteness, colour, owner, explodes };
+
+
+			let data = JSON.strigify(obj);
+			console.log(data);
+			console.log()
+		}
+
+		function changeText(response) {
+			let loadedInfo = document.getElementById("loaded-info");
+			let htmlString = "";
+
+			//modificar contenido
+			let data = JSON.parse(response.responseText);
+			data.forEach(function(persona){
+				htmlString +=
+			})
+		}
 	</script>
 </head>
 <body>
 	<h1>JSON y AJAX</h1>
 	<H3>permitir que ajax modifique el contenido</H3>
 	<button id="btn" type="button"  onclick="loadData()">Mostar info sin recargar pantalla</button>
+	<div id="formulario">
+		<div>
+			<h3>Name:</h3>
+			<input type="text" name="name">
+		</div>
+		<div>
+			<h3>Cuteness:</h3>
+			<input type="text" name="cuteness">
+		</div>
+		<div>
+			<h3>Colour:</h3>
+			<input type="text" name="colour">
+		</div>
+		<div>
+			<h3>Owner:</h3>
+			<input type="text" name="owner"><br>
+			<input type="checkbox" name="Explodes"><br>
+			<button id="btn-create" type="button" onclick="postExample()"> Crear el Gato</button>
+		</div>
+	</div>
 	<div id="loaded-info"></div>
 </body>
 </html>
