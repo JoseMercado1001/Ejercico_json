@@ -13,7 +13,7 @@
 				console.log(this.readyState, this.status, this.statusText);
 			}
 
-			xhr.open("GET", "https://josemercado1001.github.io/Ejercico_json/");
+			xhr.open("GET", "https://josemercado1001.github.io/Ejercico_json/nombre.json");
 
 			//procesar la peticion 
 			xhr.onload = function(){
@@ -35,7 +35,11 @@
 					//la informacion no llego
 					alert("ERROR" + this.status);
 				}
-			}
+			};
+
+			xhr onerror = function() {
+				alert("la conexion ha fallado");
+			} 
 			//
 			xhr.send();
 		}	
