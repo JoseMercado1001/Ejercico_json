@@ -43,11 +43,11 @@
 			} 
 			//
 			xhr.send();
-		}
+		};
 		function postExample() {
 			let xhr = new XMLHttpRequest();
 			xhr.open("POST", "https://10.24.43.221:300/kittens");
-
+			xhr.setRequestHeader("content-type", "application/json");
 			xhr.onload = function(){};
 
 			xhr.onerror = function(){
@@ -56,17 +56,18 @@
 
 			let name = document getElementById('name').value;
 			let cuteness = document getElementById('cuteness').value;
-			let colour = document getElementById('colour').value;
+			let color = document getElementById('color').value;
 			let owner = document getElementById('owner').value;
 			let explodes = document getElementById('explodes').checked;
 
-			let obj = {name, cuteness, colour, owner, explodes };
+			let obj = {name, cuteness, color, owner, explodes };
 
 
 			let data = JSON.strigify(obj);
+			console.log(obj);
 			console.log(data);
-			console.log()
-		}
+			xhr.send(data);
+		};
 
 		function changeText(response) {
 			let loadedInfo = document.getElementById("loaded-info");
@@ -75,7 +76,7 @@
 			//modificar contenido
 			let data = JSON.parse(response.responseText);
 			data.forEach(function(persona){
-				htmlString +=
+				htmlString += 
 			})
 		}
 	</script>
@@ -87,19 +88,19 @@
 	<div id="formulario">
 		<div>
 			<h3>Name:</h3>
-			<input type="text" name="name">
+			<input type="text" id="name">
 		</div>
 		<div>
 			<h3>Cuteness:</h3>
-			<input type="text" name="cuteness">
+			<input type="text" id="cuteness">
 		</div>
 		<div>
 			<h3>Colour:</h3>
-			<input type="text" name="colour">
+			<input type="text" id="color">
 		</div>
 		<div>
 			<h3>Owner:</h3>
-			<input type="text" name="owner"><br>
+			<input type="text" id="owner"><br>
 			<input type="checkbox" name="Explodes"><br>
 			<button id="btn-create" type="button" onclick="postExample()"> Crear el Gato</button>
 		</div>
